@@ -1,46 +1,36 @@
 function threeSum(arr, target) {
-  arr.sort((a, b) => a - b); // Sort the array in ascending order
-  let closestSum = Infinity; // Initialize the closestSum to a large value
-
+// write your code here
+	arr.sort((a, b) => a - b);
+  
+  // Initialize variables
+  let closestSum = arr[0] + arr[1] + arr[2];
+  
+  // Iterate through the array
   for (let i = 0; i < arr.length - 2; i++) {
     let left = i + 1;
     let right = arr.length - 1;
-
+    
     while (left < right) {
-      const currentSum = arr[i] + arr[left] + arr[right];
-      if (Math.abs(currentSum - target) < Math.abs(closestSum - target)) {
-        closestSum = currentSum;
+      const sum = arr[i] + arr[left] + arr[right];
+      
+      // Check if the current sum is closer to the target
+      if (Math.abs(sum - target) < Math.abs(closestSum - target)) {
+        closestSum = sum;
       }
-
-      if (currentSum < target) {
+      
+      if (sum < target) {
         left++;
-      } else if (currentSum > target) {
+      } else if (sum > target) {
         right--;
       } else {
-        // If the currentSum is equal to target, we found the exact sum, so we can return it.
-        return currentSum;
+        // Found an exact match, so return the sum
+        return sum;
       }
     }
   }
-
+  
   return closestSum;
+  
 }
-
-// Test cases
-console.log(threeSum([-1, 2, 1, -4], 1)); // Output: 2
-
-// If you want to take user input, you can use the following approach:
-const readline = require("readline").createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-readline.question("Enter the array elements separated by spaces: ", (input) => {
-  const arr = input.split(" ").map(Number);
-
-  readline.question("Enter the target sum: ", (target) => {
-    const result = threeSum(arr, Number(target));
-    console.log("The sum closest to the target is:", result);
-    readline.close();
-  });
-});
+ 
+module.exports = threeSum;
