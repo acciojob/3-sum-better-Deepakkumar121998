@@ -26,7 +26,10 @@ function threeSum(arr, target) {
   return closestSum;
 }
 
-// User input using readline
+// Test cases
+console.log(threeSum([-1, 2, 1, -4], 1)); // Output: 2
+
+// If you want to take user input, you can use the following approach:
 const readline = require("readline").createInterface({
   input: process.stdin,
   output: process.stdout,
