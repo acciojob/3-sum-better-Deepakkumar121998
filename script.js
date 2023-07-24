@@ -26,8 +26,18 @@ function threeSum(arr, target) {
   return closestSum;
 }
 
-// Test the function with the given example
-const S = [-1, 2, 1, -4];
-const target = 1;
-const result = threeSum(S, target);
-console.log(result);
+// User input using readline
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+readline.question("Enter the array elements separated by spaces: ", (input) => {
+  const arr = input.split(" ").map(Number);
+
+  readline.question("Enter the target sum: ", (target) => {
+    const result = threeSum(arr, Number(target));
+    console.log("The sum closest to the target is:", result);
+    readline.close();
+  });
+});
